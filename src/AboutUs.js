@@ -2,13 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import Figure from 'react-bootstrap/Figure';
 
-
-
-
-
 class AboutUs extends React.Component {
-
-
   render() {
     return (
       <>
@@ -53,7 +47,7 @@ class AboutUs extends React.Component {
               rounded={true}
             />
             <Figure.Caption>
-              Kevin 
+              Kevin
             </Figure.Caption>
           </Figure>
         </Container>
