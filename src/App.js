@@ -2,8 +2,6 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Recipes from './Recipes';
-
-//import LoginButton from './LoginButton';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from './AboutUs';
 
