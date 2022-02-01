@@ -3,15 +3,11 @@ import Header from './Header';
 import Footer from './Footer';
 import Recipes from './Recipes';
 
-
-
-// import LoginButton from './LoginButton';
-
-
+//import LoginButton from './LoginButton';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from './AboutUs';
 
-//import { withAuth0 } from '@auth0/auth0-react';
+import { withAuth0 } from '@auth0/auth0-react';
 
 
 class App extends React.Component {
@@ -39,4 +35,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
