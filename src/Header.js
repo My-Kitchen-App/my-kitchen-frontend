@@ -1,5 +1,7 @@
 import React from 'react';
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Nav, Navbar, Container, NavItem } from 'react-bootstrap';
+
+
 
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
@@ -15,11 +17,17 @@ class Header extends React.Component {
         <Container>
           <Navbar.Brand href="home">My Kitchen</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="home">Home</Nav.Link>
-            <Nav.Link href="savedRecipes">Saved Recipes</Nav.Link>
-            <Nav.Link href="aboutus">About Us</Nav.Link>
+            <Nav.Item>
+              <Nav.Link href="/home">Home</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/savedRecipes">Saved Recipes</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/aboutus">About Us</Nav.Link>
+            </Nav.Item>
           </Nav>
-          {this.props.auth0.isAuthenticated ? <Navbar.Brand><LogoutButton/></Navbar.Brand>:<Navbar.Brand><LoginButton/></Navbar.Brand>
+          {this.props.auth0.isAuthenticated ? <Navbar.Brand><LogoutButton /></Navbar.Brand> : <Navbar.Brand><LoginButton /></Navbar.Brand>
           }
         </Container>
       </Navbar>
