@@ -1,18 +1,11 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-//import axios from 'axios';
+import axios from 'axios';
 import Card from 'react-bootstrap/Card';
-import { withAuth0 } from '@auth0/auth0-react';
+import RenderModalButton from './RenderModalButton';
+import RecipeModal from './RecipeModal';
 
-
-
-
-
-//function that takes input from user to search for recipes
-
-// input = text only (provide example placeholder)
-// submit button 
 
 // let SERVER = process.env.REACT_APP_SERVER;
 
@@ -20,39 +13,40 @@ class Recipes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: []
+      recipes: [],
+      show: false
     };
   }
   getRecipes = async (url) => {
-    if (this.props.auth0.isAuthenticated){
-      console.log('I am here');
-    const responseFromAuth0 = await this.props.auth0.getIdTokenClaims();
-    // VERY IMPORTANT.  Double underscore!!!
-    const jwt = responseFromAuth0.__raw;
-    console.log(jwt);
-    }
-    // let recipeResults = await axios.get(url);
-    // this.setState({
-    //   recipes: recipeResults.data
-    // });
-    // console.log(this.state.recipes);
+    let recipeResults = await axios.get(url);
+    this.setState({
+      recipes: recipeResults.data
+    });
+    console.log(this.state.recipes);
   };
 
 
   handleIngredientSubmit = async (e) => {
     e.preventDefault();
-    
-    // let ingredients = e.target.formBasicIngredient.value;
-    // let url = `http://localhost:3001/recipes?ingredient=${ingredients}`;
-    // this.getRecipes(url);
-    // console.log('activated');
+    let ingredients = e.target.formBasicIngredient.value;
+    let url = `http://localhost:3001/recipes?ingredient=${ingredients}`;
+    this.getRecipes(url);
   };
 
-  componentDidUpdate() {
-    console.log('component did mount');
-    this.getRecipes();
-  }
+  handleShowModal = (recipe) => {
+    console.log('modal activated')
+    this.setState({
+      show: true,
+      currentRecipe: recipe
+    })
+  };
 
+
+  handleCloseModal = () => {
+    this.setState({
+      show: false,
+    })
+  };
 
   render() {
     return (
@@ -69,6 +63,16 @@ class Recipes extends React.Component {
             Submit
           </Button>
         </Form>
+        {this.state.show && 
+        <RecipeModal 
+          handleCloseModal={this.handleCloseModal}
+          handleShowModal={this.handleShowModal}
+          show={this.state.show}
+          recipeImg={this.state.currentRecipe.image}
+          title={this.state.currentRecipe.title}
+          missedIngredients={this.state.currentRecipe.missedIngredients}
+          recipeObj={this.state.currentRecipe}
+        />}
         {
           this.state.recipes.length > 0 ? (
             this.state.recipes.map((recipe, index) => (
@@ -76,10 +80,7 @@ class Recipes extends React.Component {
                 <Card.Img src={recipe.image} />
                 <Card.Body>
                   <Card.Title>{recipe.title}</Card.Title>
-                  <Card.Text>
-                    description
-                  </Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
+                  <RenderModalButton handleShowModal={this.handleShowModal} recipe={recipe}/>
                 </Card.Body>
               </Card>
             ))
@@ -92,4 +93,4 @@ class Recipes extends React.Component {
   }
 }
 
-export default withAuth0(Recipes);
+export default Recipes;
