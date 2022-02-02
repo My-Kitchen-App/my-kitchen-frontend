@@ -24,15 +24,13 @@ class RecipeModal extends React.Component {
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src={this.props.recipeImg}></img>
-
+              <img src={this.props.recipeImg}></img>
             <Card style={{ width: '18rem' }}>
               <Card.Header>Missing Ingredient Count: {this.props.missedIngredients.length}</Card.Header>
               <ListGroup variant="flush">
                 {ListItems}
               </ListGroup>
             </Card>
-
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary">
