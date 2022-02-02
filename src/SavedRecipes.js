@@ -1,15 +1,15 @@
 import React from 'react';
 
 
-class SavedRecipes extends React.Component {
+// class SavedRecipes extends React.Component {
 
 
 
-  render() {
-    return (
+//   render() {
+//     return (
 
-    )
-  }
-}
+//     )
+//   }
+// }
 
-export default SavedRecipes;
+// export default SavedRecipes;

@@ -1,19 +1,11 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+//import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import RenderModalButton from './RenderModalButton';
 import RecipeModal from './RecipeModal';
 
-
-
-
-
-//function that takes input from user to search for recipes
-
-// input = text only (provide example placeholder)
-// submit button 
 
 // let SERVER = process.env.REACT_APP_SERVER;
 
@@ -34,7 +26,7 @@ class Recipes extends React.Component {
   };
 
 
-  handleIngredientSubmit = (e) => {
+  handleIngredientSubmit = async (e) => {
     e.preventDefault();
     let ingredients = e.target.formBasicIngredient.value;
     let url = `http://localhost:3001/recipes?ingredient=${ingredients}`;
@@ -48,6 +40,7 @@ class Recipes extends React.Component {
       currentRecipe: recipe
     })
   };
+
 
   handleCloseModal = () => {
     this.setState({
