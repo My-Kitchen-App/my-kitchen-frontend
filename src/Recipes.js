@@ -3,6 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import RenderModalButton from './RenderModalButton';
+import RecipeModal from './RecipeModal';
 
 
 
@@ -19,7 +21,8 @@ class Recipes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: []
+      recipes: [],
+      show: false
     };
   }
   getRecipes = async (url) => {
@@ -36,14 +39,21 @@ class Recipes extends React.Component {
     let ingredients = e.target.formBasicIngredient.value;
     let url = `http://localhost:3001/recipes?ingredient=${ingredients}`;
     this.getRecipes(url);
-    console.log('activated');
   };
 
-  // componentDidMount() {
-  //   console.log('component did mount');
-  //   this.getRecipes();
-  // }
+  handleShowModal = (recipe) => {
+    console.log('modal activated')
+    this.setState({
+      show: true,
+      currentRecipe: recipe
+    })
+  };
 
+  handleCloseModal = () => {
+    this.setState({
+      show: false,
+    })
+  };
 
   render() {
     return (
@@ -60,6 +70,16 @@ class Recipes extends React.Component {
             Submit
           </Button>
         </Form>
+        {this.state.show && 
+        <RecipeModal 
+          handleCloseModal={this.handleCloseModal}
+          handleShowModal={this.handleShowModal}
+          show={this.state.show}
+          recipeImg={this.state.currentRecipe.image}
+          title={this.state.currentRecipe.title}
+          missedIngredients={this.state.currentRecipe.missedIngredients}
+          recipeObj={this.state.currentRecipe}
+        />}
         {
           this.state.recipes.length > 0 ? (
             this.state.recipes.map((recipe, index) => (
@@ -67,10 +87,7 @@ class Recipes extends React.Component {
                 <Card.Img src={recipe.image} />
                 <Card.Body>
                   <Card.Title>{recipe.title}</Card.Title>
-                  <Card.Text>
-                    description
-                  </Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
+                  <RenderModalButton handleShowModal={this.handleShowModal} recipe={recipe}/>
                 </Card.Body>
               </Card>
             ))
