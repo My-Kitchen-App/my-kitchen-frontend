@@ -10,7 +10,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 
 class App extends React.Component {
 
-
+  
   render() {
     return (
       <>
@@ -18,7 +18,7 @@ class App extends React.Component {
         
         <Router>
           <Routes>
-            <Route exact path="/home" element={<Recipes />}>
+            <Route exact path="/" element={<Recipes />}>
             </Route>
             <Route exact path="/savedRecipes">
             </Route>

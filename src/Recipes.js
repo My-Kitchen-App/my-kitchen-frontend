@@ -1,8 +1,9 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+//import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import { withAuth0 } from '@auth0/auth0-react';
 
 
 
@@ -23,26 +24,34 @@ class Recipes extends React.Component {
     };
   }
   getRecipes = async (url) => {
-    let recipeResults = await axios.get(url);
-    this.setState({
-      recipes: recipeResults.data
-    });
-    console.log(this.state.recipes);
+    if (this.props.auth0.isAuthenticated){
+      console.log('I am here');
+    const responseFromAuth0 = await this.props.auth0.getIdTokenClaims();
+    // VERY IMPORTANT.  Double underscore!!!
+    const jwt = responseFromAuth0.__raw;
+    console.log(jwt);
+    }
+    // let recipeResults = await axios.get(url);
+    // this.setState({
+    //   recipes: recipeResults.data
+    // });
+    // console.log(this.state.recipes);
   };
 
 
-  handleIngredientSubmit = (e) => {
+  handleIngredientSubmit = async (e) => {
     e.preventDefault();
-    let ingredients = e.target.formBasicIngredient.value;
-    let url = `http://localhost:3001/recipes?ingredient=${ingredients}`;
-    this.getRecipes(url);
-    console.log('activated');
+    
+    // let ingredients = e.target.formBasicIngredient.value;
+    // let url = `http://localhost:3001/recipes?ingredient=${ingredients}`;
+    // this.getRecipes(url);
+    // console.log('activated');
   };
 
-  // componentDidMount() {
-  //   console.log('component did mount');
-  //   this.getRecipes();
-  // }
+  componentDidUpdate() {
+    console.log('component did mount');
+    this.getRecipes();
+  }
 
 
   render() {
@@ -83,4 +92,4 @@ class Recipes extends React.Component {
   }
 }
 
-export default Recipes;
+export default withAuth0(Recipes);
