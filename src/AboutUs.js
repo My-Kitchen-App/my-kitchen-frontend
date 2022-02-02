@@ -4,9 +4,9 @@ import Figure from 'react-bootstrap/Figure';
 
 class AboutUs extends React.Component {
   render() {
+
     return (
       <>
-
         <Container>
           <Figure>
             <Figure.Image
