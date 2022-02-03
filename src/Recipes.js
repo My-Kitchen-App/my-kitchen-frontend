@@ -43,7 +43,7 @@ class Recipes extends React.Component {
 
   postRecipe = async (savedRecipe) => {
     try {
-      let url = `http://localhost:3001/recipe`;
+      let url = `${process.env.REACT_APP_SERVER}/recipe`;
       await axios.post(url, savedRecipe);
     } catch (err) {
       console.error(err)
@@ -51,7 +51,7 @@ class Recipes extends React.Component {
   }
 
   getInstructions = async (id) => {
-    let url = `http://localhost:3001/analyzedInstructions?recipeid=${id}`
+    let url = `${process.env.REACT_APP_SERVER}/analyzedInstructions?recipeid=${id}`
     let instructionsResults = await axios.get(url);
     this.setState({
       instructions: instructionsResults.data
@@ -72,7 +72,7 @@ class Recipes extends React.Component {
   handleIngredientSubmit = async (e) => {
     e.preventDefault();
     let ingredients = e.target.formBasicIngredient.value;
-    let url = `http://localhost:3001/recipes?ingredient=${ingredients}`;
+    let url = `${process.env.REACT_APP_SERVER}/recipes?ingredient=${ingredients}`;
     this.getRecipes(url);
   };
 
