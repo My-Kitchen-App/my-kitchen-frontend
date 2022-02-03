@@ -4,8 +4,10 @@ import Button from 'react-bootstrap/Button';
 import { Image } from 'react-bootstrap';
 import axios from 'axios';
 import SavedRecipeModal from './SavedRecipeModal';
+import InstructionsModal from './InstructionsModal';
 
 import { withAuth0 } from '@auth0/auth0-react';
+import Instructions from './Instructions';
 
 class SavedRecipes extends React.Component {
   constructor(props) {
@@ -16,7 +18,10 @@ class SavedRecipes extends React.Component {
       show: false,
       currentRecipe: {},
       gotInstructions: false,
-      instructions: []
+      instructions: [],
+      savedRecipeModal: false,
+      instructionsModal: false,
+      noteAdded: false
 
 
     };
@@ -57,11 +62,12 @@ class SavedRecipes extends React.Component {
 
   handleDelete = (_id) => {
     this.deleteDbRecipe(_id);
+    this.setState({
+      gotInstructions: false
+    })
   }
-
   updateDbRecipe = async (url, currentRecipe) => {
-    let updatedNotesFromDb = await axios.put(url, currentRecipe);
-    //this.getDbRecipes();
+    await axios.put(url, currentRecipe);
   }
 
   handleUpdateSubmit = (e) => {
@@ -71,28 +77,26 @@ class SavedRecipes extends React.Component {
     currentRecipe.notes = notes;
     let url = `http://localhost:3001/recipe/${currentRecipe._id}`
     this.updateDbRecipe(url, currentRecipe);
+    this.setState ({
+      noteAdded: true
+    })
   }
 
 
   getInstructions = async (id) => {
     let url = `http://localhost:3001/analyzedInstructions?recipeid=${id}`
     let instructionsResults = await axios.get(url);
-    this.setState ({
-      instructions: instructionsResults.data[0].steps
+    console.log(instructionsResults);
+    this.setState({
+      instructions: instructionsResults.data[0].steps,
+      gotInstructions: true,
+      instructionsModal: true,
+      show: true
     });
     console.log(this.state.instructions);
   };
 
-  
-  handleGetInstructions = (recipeObj) => {
-    let id = recipeObj.apiId; 
-    console.log(id);
-    this.setState({
-      gotInstructions: true,
 
-    })
-    this.getInstructions(id);
-  }
 
 
   componentDidMount() {
@@ -100,56 +104,90 @@ class SavedRecipes extends React.Component {
   }
 
 
-  handleShowModal = (obj) => {
-    this.setState({
-      show: true,
-      currentRecipe: obj
-    })
-  };
-
-
-  handleCloseModal = () => {
+  handleCloseSavedRecipeModal = () => {
     this.setState({
       show: false,
+      savedRecipeModal: false,
+      noteAdded: false
+    })
+    console.log(this.state.noteAdded)
+  };
+
+  handleCloseInstructionsModal = () => {
+    this.setState({
+      show: false,
+      instructionsModal: false,
+      
     })
   };
 
+
+  renderSavedRecipeModal = (obj) => {
+    this.setState({
+      savedRecipeModal: true,
+      show: true,
+      currentRecipe: obj,
+    })
+    
+  }
+
+  handleGetInstructions = (recipeObj) => {
+    let id = recipeObj.apiId;
+    console.log(id);
+    this.setState({
+      gotInstructions: true,
+
+    })
+    this.getInstructions(id);
+
+  }
+
+  renderInstructionsModal = (recipeObj) => {
+    let id = recipeObj.apiId;
+    this.getInstructions(id);
+
+  }
+
   render() {
-
-
     return (
       <>
-      <Accordion>
-        {
-          this.state.dbRecipes.length > 0 ? (
-            this.state.dbRecipes.map((obj, idx) => (
-              <Accordion.Item key={idx} eventKey={idx}>
-                <Accordion.Header>{obj.title}</Accordion.Header>
-                <Accordion.Body>
-                  <Image src={obj.image} />
-                  <Button onClick={() => this.handleGetInstructions(obj)}>Get Instructions</Button>
-                  <Button onClick={() => this.handleShowModal(obj)}>Update Item</Button>
-                  <Button onClick={() => this.handleDelete(obj._id)}>Delete Item</Button>
-                  {this.state.gotInstructions ? (
-                    <ul>{this.state.instructions.map( obj => <li>{obj.step}</li> )}</ul>
-                  ) :  (null) }
-                </Accordion.Body>
-              </Accordion.Item>
-            )
-            )
-          ) : (null)
-        }
-      </Accordion>
-      {this.state.show &&
+        <Accordion>
+          {
+            this.state.dbRecipes.length > 0 ? (
+              this.state.dbRecipes.map((obj, idx) => (
+                <Accordion.Item key={idx} eventKey={idx}>
+                  <Accordion.Header>{obj.title}</Accordion.Header>
+                  <Accordion.Body>
+                    <Image src={obj.image} />
+                    {obj.notes ? <p>{obj.notes}</p> : <p>Add Notes</p>}
+                    <Button onClick={() => this.renderInstructionsModal(obj)}>Get Instructions</Button>
+                    <Button onClick={() => this.renderSavedRecipeModal(obj)}>Update Item</Button>
+                    <Button onClick={() => this.handleDelete(obj._id)}>Delete Item</Button>
+                  </Accordion.Body>
+                </Accordion.Item>
+              )
+              )
+            ) : (null)
+          }
+        </Accordion>
+        {this.state.savedRecipeModal &&
           <SavedRecipeModal
-            handleCloseModal={this.handleCloseModal}
-            handleShowModal={this.handleShowModal}
+            handleCloseModal={this.handleCloseSavedRecipeModal}
             handleUpdateSubmit={this.handleUpdateSubmit}
             show={this.state.show}
+            noteAdded={this.state.noteAdded}
           />}
+        {this.state.instructionsModal &&
+          <InstructionsModal
+            handleCloseModal={this.handleCloseInstructionsModal}
+            show={this.state.show}
+            instructions={this.state.instructions}
+
+          />
+        }
       </>
 
-      
+
 
     );
   }

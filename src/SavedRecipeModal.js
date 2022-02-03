@@ -25,7 +25,8 @@ class SavedRecipeModal extends React.Component {
                 <Form.Label>Notes</Form.Label>
                 <Form.Control type="text" placeholder={'write some notes here'} />
               </Form.Group>
-              <Button type="submit">Add Notes</Button>
+              {!this.props.noteAdded && <Button type="submit">Add Notes</Button>}
+              {this.props.noteAdded &&<Button>Note Added</Button>}
             </Form>
           </Modal.Body>
         </Modal>

@@ -30,7 +30,8 @@ class Recipes extends React.Component {
     this.state = {
       recipes: [],
       show: false,
-      saved: false
+      saved: false,
+      instructions: [{ steps:[{step:'Click Get Instructions Below For Detailed Information'}]}]
     };
   }
   getRecipes = async (url) => {
@@ -55,10 +56,11 @@ class Recipes extends React.Component {
     this.setState({
       instructions: instructionsResults.data
     });
-    console.log(this.state.instructions);
+    console.log(this.state.instructions[0].steps[0].step);
   };
 
-  
+
+ 
   
   handleGetInstructions = (recipeObj) => {
     let id = recipeObj.apiId;
@@ -96,6 +98,8 @@ class Recipes extends React.Component {
   handleCloseModal = () => {
     this.setState({
       show: false,
+      saved: false,
+      instructions: [{ steps:[{step:'Click Get Instructions Below For Detailed Information'}]}]
     })
   };
 
@@ -128,6 +132,8 @@ class Recipes extends React.Component {
             handlePost={this.handlePost}
             saved={this.state.saved}
             handleGetInstructions={this.handleGetInstructions}
+            instructions={this.state.instructions}
+           
           />}
         {
           this.state.recipes.length > 0 ? (
