@@ -4,9 +4,9 @@ import Footer from './Footer';
 import Recipes from './Recipes';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from './AboutUs';
-import Instructions from './Instructions';
+
 import SavedRecipes from './SavedRecipes';
-// import background from './images/background.jpeg';
+
 
 
 import { withAuth0 } from '@auth0/auth0-react';
@@ -29,8 +29,6 @@ class App extends React.Component {
             <Route exact path="/savedRecipes" element={<SavedRecipes />}>
             </Route>
             <Route exact path="/aboutus" element={<AboutUs />}>
-            </Route>
-            <Route exact path="/instructions" element={<Instructions />}>
             </Route>
           </Routes>
           <Footer />

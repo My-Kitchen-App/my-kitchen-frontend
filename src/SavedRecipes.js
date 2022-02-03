@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Container, ListGroupItem } from 'react-bootstrap';
+import { Accordion, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Image } from 'react-bootstrap';
 import axios from 'axios';
@@ -12,7 +12,7 @@ import Alert from 'react-bootstrap/Alert'
 
 
 import { withAuth0 } from '@auth0/auth0-react';
-import Instructions from './Instructions';
+
 
 class SavedRecipes extends React.Component {
   constructor(props) {
@@ -130,6 +130,7 @@ class SavedRecipes extends React.Component {
     this.getInstructions(id);
   };
 
+  
 
 
   componentDidMount() {
@@ -164,16 +165,7 @@ class SavedRecipes extends React.Component {
     
   }
 
-  handleGetInstructions = (recipeObj) => {
-    let id = recipeObj.apiId;
-    console.log(id);
-    this.setState({
-      gotInstructions: true,
-
-    })
-    this.getInstructions(id);
-
-  }
+  
 
   renderInstructionsModal = (recipeObj) => {
     let id = recipeObj.apiId;

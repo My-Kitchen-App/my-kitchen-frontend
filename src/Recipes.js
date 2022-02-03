@@ -318,7 +318,7 @@ class Recipes extends React.Component {
                                 <li>Wash your rice and bring to boil on medium heat with very little water as you are still going to cook it in chicken stock.</li>
                                 <li>Once the rice is slightly soft and the initial water has dried up, reduce the heat and pour in the chicken stock and cook till the chicken stock is all absorbed and has dried up. The chicken stock if freshly made will have some oil from the chicken so your rice does not need oil.</li>
                                 <li>Increase the heat and stir in the chopped vegetables and pepper</li>
-                                <li>Add your seasoning cube.Finally stir in your cubed mango and serve warm with any protein of your choice. I’d say chicken but it’s up to you</li>
+                                <li>Add your seasoning cube.Finally stir in your cubed mango and serve warm with any protein of your choice. I'd say chicken but it's up to you</li>
                               </ul>
                             </Accordion.Body>
                           </Accordion.Item>
