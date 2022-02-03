@@ -7,6 +7,8 @@ import RenderModalButton from './RenderModalButton';
 import RecipeModal from './RecipeModal';
 import Container from 'react-bootstrap/Container';
 
+import { withAuth0 } from '@auth0/auth0-react';
+
 
 // let SERVER = process.env.REACT_APP_SERVER;
 
@@ -44,6 +46,8 @@ class Recipes extends React.Component {
     console.log(this.state.instructions);
   };
 
+  
+  
   handleGetInstructions = (recipeObj) => {
     let id = recipeObj.apiId; 
     console.log(id);
@@ -60,7 +64,8 @@ class Recipes extends React.Component {
 
   handlePost = (recipeObj) => {
     let savedRecipe = recipeObj;
-    // savedRecipe.email = 
+    savedRecipe.email = this.props.auth0.user.email;
+    console.log(savedRecipe);
     this.postRecipe(savedRecipe);
     this.setState({
       saved: true
@@ -134,4 +139,4 @@ class Recipes extends React.Component {
   }
 }
 
-export default Recipes;
+export default withAuth0(Recipes);
