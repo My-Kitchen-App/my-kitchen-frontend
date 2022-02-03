@@ -5,7 +5,7 @@ class Footer extends React.Component {
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand><p> &copy;myKitchen</p></Navbar.Brand>
+        <Navbar.Brand><p> &copy;MyKitchen</p></Navbar.Brand>
       </Navbar>
     );
   }

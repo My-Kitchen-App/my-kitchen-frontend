@@ -14,9 +14,9 @@ My Kitchen aims to solve the logistical dilemma of using remaining pantry items 
 
 ### Domain Modeling:
 
-![image](./images/myKitchen_wf_p1.png)
-![image](./images/myKitchen_wf_p2.png)
-![image](./images/myKitchen_wf_p3.png)
+![image](./img/myKitchen_wf_p1.png)
+![image](./img/myKitchen_wf_p2.png)
+![image](./img/myKitchen_wf_p3.png)
 
 ### Dataflow:
 

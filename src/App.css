@@ -24,6 +24,14 @@
   color: white;
 }
 
+#root {
+  background-image: url(./images/background.jpeg);
+}
+
+body {
+  background-color: black;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +44,6 @@
     transform: rotate(360deg);
   }
 }
+
+
+
