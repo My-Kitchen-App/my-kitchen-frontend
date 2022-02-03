@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import ReactCardFlip from 'react-card-flip';
+import { FaGithub,  FaLinkedin } from 'react-icons/fa';
 
 
 
@@ -15,6 +16,8 @@ class AboutUs extends React.Component {
       showHambalieu: false
     };
   }
+
+
 
   handleClick(e) {
     e.preventDefault();
@@ -35,12 +38,22 @@ class AboutUs extends React.Component {
                   <Card.Title>
                     Hambalieu Jallow
                   </Card.Title>
+                  <div >
+                    <a href='https://github.com/Hambalieu'>
+                      <FaGithub/>
+                    </a>
+                    <a href='https://www.linkedin.com/in/hambalieu-jallow-a75989226/'>
+                      <FaLinkedin/>
+                    </a>
+                  </div>
                 </Card>
                 <Card border="dark" style={{ width: '18rem' }}>
                   <Card.Text>
                     My name is Hambalieu Jallow but I go by 'JALLOW'.I am Originally from Gambia but I have been Living in Seattle for past 6 years. I am currently a Full-Stack Developer utilizing JavaScript,React,CSS,HTML,NodeJS,Express and MongoDb to create fully functional web applications.I am a highly motivated and highly creative engineer that brings a diverse and multilingual perspective to any company culture.Able to work well with others, quick learner, attentive to details, adapt to new work environments quickly, good with multitasking, passionate about the work I do and I do it with a high level of integrity and discretion.
                   </Card.Text>
-                  <Button onClick={() => this.setState({ showHambalieu: false  })}>Click to see the Developer</Button>
+                  <Button onClick={() => this.setState({ showHambalieu: false })}>Click to see the Developer</Button>
+                  <h3> <FaGithub /> </h3>
+
                 </Card>
               </ReactCardFlip>
             </Col>
@@ -53,6 +66,14 @@ class AboutUs extends React.Component {
                   <Card.Title>
                     Regan Hayes
                   </Card.Title>
+                  <div >
+                    <a href='https://github.com/raechanel'>
+                      <FaGithub/>
+                    </a>
+                    <a href='https://www.linkedin.com/in/reganhayes/'>
+                      <FaLinkedin/>
+                    </a>
+                  </div>
                 </Card>
                 <Card border="dark" style={{ width: '18rem' }}>
                   <Card.Text>
@@ -72,12 +93,20 @@ class AboutUs extends React.Component {
                   <Card.Title>
                     Kevin LaMarca
                   </Card.Title>
+                  <div >
+                    <a href='https://github.com/KevLaMDev'>
+                      <FaGithub/>
+                    </a>
+                    <a href='https://www.linkedin.com/in/kevin-lamarca/'>
+                      <FaLinkedin/>
+                    </a>
+                  </div>
                 </Card>
                 <Card border="dark" style={{ width: '18rem' }}>
                   <Card.Text>
                     Hello, my name is Kevin LaMarca and I am a software engineer. I graduated from Baruch College with a degree in corporate communication, an amalgam of marketing, public relations and workplace communication. I worked briefly as a English foreign language teacher and then pivoted into software engineering as I enjoyed the mentorship of teaching, but longed to continue learning as a student myself. What I enjoy most in Software Engineering is the process of continual learning and collaborating to build cool things. In addition to English, I am also fluent in Italian and speak French and Spanish conversationally, allowing me to work well in international environments.
                   </Card.Text>
-                  <Button onClick={() => this.setState({ showKevin:false  })}>Click to see the Developer</Button>
+                  <Button onClick={() => this.setState({ showKevin: false })}>Click to see the Developer</Button>
                 </Card>
               </ReactCardFlip>
             </Col>
@@ -90,6 +119,14 @@ class AboutUs extends React.Component {
                   <Card.Title>
                     Shane Roach
                   </Card.Title>
+                  <div >
+                    <a href='https://github.com/Shane-Patrick-Roach'>
+                      <FaGithub/>
+                    </a>
+                    <a href='https://www.linkedin.com/in/shane-roach-908987226/'>
+                      <FaLinkedin/>
+                    </a>
+                  </div>
                 </Card>
                 <Card border="dark" style={{ width: '18rem' }}>
                   <Card.Text>
