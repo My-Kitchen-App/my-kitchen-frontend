@@ -1,0 +1,21 @@
+body {
+  background-color: rgb(191, 32, 32);
+}
+
+
+.Recipes {
+  text-align: center;
+}
+
+.col {
+  margin-bottom: 25px;
+}
+
+.card {
+  max-height: fit-content;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+}
