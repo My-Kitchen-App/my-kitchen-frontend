@@ -23,7 +23,6 @@ import { withAuth0 } from '@auth0/auth0-react';
 import { Stack } from 'react-bootstrap';
 
 
-let SERVER = process.env.REACT_APP_SERVER;
 
 class Recipes extends React.Component {
   constructor(props) {
@@ -190,7 +189,7 @@ class Recipes extends React.Component {
           <h2 className='title'>Our Favorites</h2>
           <Row xs={2} md={3} className="g-6">
             <Col>
-              <Card style={{ width: '18rem' }} className='card'>
+              <Card className='card'>
                 <Card.Img src={crabImage} />
                 <Card.Body>
                   <Card.Title>Broiled Crab Cakes</Card.Title>
@@ -227,7 +226,7 @@ class Recipes extends React.Component {
               </Card>
             </Col>
             <Col>
-              <Card style={{ width: '18rem' }} className='card'>
+              <Card className='card'>
                 <Card.Img src={shakeImage} />
                 <Card.Body>
                   <Card.Title>Homemade Strawberry Shake</Card.Title>
@@ -258,7 +257,7 @@ class Recipes extends React.Component {
               </Card>
             </Col>
             <Col>
-              <Card style={{ width: '18rem' }} className='card'>
+              <Card className='card'>
                 <Card.Img src={sushiImage} />
                 <Card.Body>
                   <Card.Title>Japanese Sushi</Card.Title>
@@ -299,7 +298,7 @@ class Recipes extends React.Component {
               </Card>
             </Col>
             <Col>
-              <Card style={{ width: '18rem' }} className='card'>
+              <Card className='card'>
                 <Card.Img src={chickenImage} />
                 <Card.Body>
                   <Card.Title>Crispy Buttermilk Fried Chicken</Card.Title>
@@ -330,7 +329,7 @@ class Recipes extends React.Component {
               </Card>
             </Col>
             <Col>
-              <Card style={{ width: '18rem' }} className='card'>
+              <Card className='card'>
                 <Card.Img src={riceImage} />
                 <Card.Body>
                   <Card.Title>Mango Fried Rice</Card.Title>
@@ -365,7 +364,7 @@ class Recipes extends React.Component {
               </Card>
             </Col>
             <Col>
-              <Card style={{ width: '18rem' }} className='card'>
+              <Card className='card'>
                 <Card.Img src={pokeImage} />
                 <Card.Body>
                   <Card.Title>Hawaiian Poke (Aloha Poke)</Card.Title>
