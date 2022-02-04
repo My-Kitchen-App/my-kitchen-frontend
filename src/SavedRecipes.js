@@ -8,7 +8,7 @@ import SavedRecipeModal from './SavedRecipeModal';
 import InstructionsModal from './InstructionsModal';
 
 import Alert from 'react-bootstrap/Alert'
-
+import './SavedRecipes.css'
 
 
 import { withAuth0 } from '@auth0/auth0-react';
@@ -183,12 +183,12 @@ class SavedRecipes extends React.Component {
             <Alert variant="warning">
               <Alert.Heading>Login!</Alert.Heading>
               <p>
-                To see your saved recipes, log in.
+                To see your saved recipes please log in.
               </p>
             </Alert>
           </Container>
         )}
-
+        <h2 className='saved'>Saved Recipes</h2>
         <Accordion>
           {
             this.state.dbRecipes.length > 0 ? (
@@ -198,10 +198,10 @@ class SavedRecipes extends React.Component {
                   <Accordion.Body>
                     <Image src={obj.image} />
 
-                    {obj.notes ? <p>{obj.notes}</p> : <p>Add Notes</p>}
-                    <Button onClick={() => this.renderInstructionsModal(obj)}>Get Instructions</Button>
-                    <Button onClick={() => this.renderSavedRecipeModal(obj)}>Update Item</Button>
-                    <Button onClick={() => this.handleDelete(obj._id)}>Delete Item</Button>
+                    {obj.notes ? <p>Notes: {obj.notes}</p> : <p>Add Notes</p>}
+                    <Button className='instructions' variant="outline-secondary" onClick={() => this.renderInstructionsModal(obj)}>Instructions</Button>
+                    <Button className='update' variant="outline-warning" onClick={() => this.renderSavedRecipeModal(obj)}>Add/Update Note</Button>
+                    <Button className='delete' variant="outline-danger" onClick={() => this.handleDelete(obj._id)}>Delete Recipe</Button>
 
                   </Accordion.Body>
                 </Accordion.Item>
