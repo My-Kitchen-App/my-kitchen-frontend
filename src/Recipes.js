@@ -140,7 +140,7 @@ class Recipes extends React.Component {
         <Form onSubmit={this.handleIngredientSubmit}>
           <Form.Group className="mb-3" controlId="formBasicIngredient">
             <Form.Label>Input Your Ingredients!</Form.Label>
-            <Form.Control type="ingredient" placeholder="Chicken" />
+            <Form.Control type="ingredient" placeholder="Example: Chicken, lemon, garlic, etc." />
             <Form.Text className="text-muted">
               What do you have in your kitchen?
             </Form.Text>
