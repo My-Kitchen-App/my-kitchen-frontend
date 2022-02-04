@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import ReactCardFlip from 'react-card-flip';
-// import { FaGithub,  FaLinkedin } from 'react-icons/fa';
+import { FaGithub,  FaLinkedin } from 'react-icons/fa';
 
 import './AboutUs.css';
 
@@ -41,6 +41,13 @@ class AboutUs extends React.Component {
                   <Card.Title style={{ textAlign: 'center' }}>
                     Hambalieu Jallow
                   </Card.Title>
+                  <div className='icons'>
+                    <a href="https://github.com/Hambalieu"><FaGithub />
+                    </a>
+                    <a href="https://www.linkedin.com/in/hambalieu-jallow-a75989226/"><FaLinkedin />
+                    </a>
+                  </div>
+
                   <Button variant="outline-secondary" onClick={() => this.setState({ showHambalieu: true })}>Learn about the App Developer</Button>
                 </Card>
                 <Card border="dark">
@@ -59,6 +66,12 @@ class AboutUs extends React.Component {
                   <Card.Title style={{ textAlign: 'center' }}>
                     Regan Hayes
                   </Card.Title>
+                  <div className='icons'>
+                    <a href="https://github.com/raechanel"><FaGithub />
+                    </a>
+                    <a href="https://www.linkedin.com/in/reganhayes/"><FaLinkedin />
+                    </a>
+                  </div>
                   <Button variant="outline-secondary" onClick={() => this.setState({ showRae: true })}>Learn about the App Developer</Button>
                 </Card>
                 <Card border="dark">
@@ -80,6 +93,12 @@ class AboutUs extends React.Component {
                   <Card.Title style={{ textAlign: 'center' }}>
                     Kevin LaMarca
                   </Card.Title>
+                  <div className='icons'>
+                    <a href="https://github.com/KevLaMDev"><FaGithub />
+                    </a>
+                    <a href="https://www.linkedin.com/in/kevin-lamarca/"><FaLinkedin />
+                    </a>
+                  </div>
                   <Button variant="outline-secondary" onClick={() => this.setState({ showKevin: true })}>Learn about the App Developer</Button>
                 </Card>
                 <Card border="dark">
@@ -97,6 +116,12 @@ class AboutUs extends React.Component {
                   <Card.Title style={{ textAlign: 'center' }}>
                     Shane Roach
                   </Card.Title>
+                  <div className='icons'>
+                    <a href="https://github.com/Shane-Patrick-Roach"><FaGithub />
+                    </a>
+                    <a href="https://www.linkedin.com/in/shane-roach-908987226/"><FaLinkedin />
+                    </a>
+                  </div>
                   <Button variant="outline-secondary" onClick={() => this.setState({ showShane: true })}>Learn about the App Developer</Button>
                 </Card>
                 <Card border="dark">
