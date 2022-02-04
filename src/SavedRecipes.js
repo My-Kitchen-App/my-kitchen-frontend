@@ -181,9 +181,9 @@ class SavedRecipes extends React.Component {
         {this.props.auth0.isAuthenticated ? (null) : (
           <Container>
             <Alert variant="warning">
-              <Alert.Heading>Please Login!</Alert.Heading>
+              <Alert.Heading>Login!</Alert.Heading>
               <p>
-                If you want to see your saved recipes, you gotta login.
+                To see your saved recipes, log in.
               </p>
             </Alert>
           </Container>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import ReactCardFlip from 'react-card-flip';
-import { FaGithub,  FaLinkedin } from 'react-icons/fa';
+// import { FaGithub,  FaLinkedin } from 'react-icons/fa';
 
 import './AboutUs.css';
 
@@ -56,7 +56,7 @@ class AboutUs extends React.Component {
               <Card.Title style={{ textAlign: 'center' }}>
                 Regan Hayes
               </Card.Title>
-              <Button variant="outline-secondary" onClick={() => this.setState({ showRae: true })}>Click about the App Developer</Button>
+              <Button variant="outline-secondary" onClick={() => this.setState({ showRae: true })}>Learn about the App Developer</Button>
             </Card>
             <Card border="dark" style={{ width: '18rem' }}>
               <Card.Text>
@@ -74,7 +74,7 @@ class AboutUs extends React.Component {
               <Card.Title style={{ textAlign: 'center' }}>
                 Kevin LaMarca
               </Card.Title>
-              <Button variant="outline-secondary" onClick={() => this.setState({ showKevin: true })}>Click about the App Developer</Button>
+              <Button variant="outline-secondary" onClick={() => this.setState({ showKevin: true })}>Learn about the App Developer</Button>
             </Card>
             <Card border="dark" style={{ width: '18rem' }}>
               <Card.Text>
@@ -91,7 +91,7 @@ class AboutUs extends React.Component {
               <Card.Title style={{ textAlign: 'center' }}>
                 Shane Roach
               </Card.Title>
-              <Button variant="outline-secondary" onClick={() => this.setState({ showShane: true })}>Click about the App Developer</Button>
+              <Button variant="outline-secondary" onClick={() => this.setState({ showShane: true })}>Learn about the App Developer</Button>
             </Card>
             <Card border="dark" style={{ width: '18rem' }}>
               <Card.Text>

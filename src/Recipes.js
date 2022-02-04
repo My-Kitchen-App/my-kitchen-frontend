@@ -143,7 +143,7 @@ class Recipes extends React.Component {
             <Form.Group controlId="formBasicIngredient">
               <Form.Label>Find A Recipe</Form.Label>
               <Stack direction="horizontal" gap={2}>
-                <Form.Control type="ingredient" placeholder="🔎           Search by Ingredients" size="lg" />
+                <Form.Control type="ingredient" placeholder="🔎  Ex: Chicken, Lemon, Garlic" size="lg" />
               </Stack>
             </Form.Group>
             <div className='search-button'>
