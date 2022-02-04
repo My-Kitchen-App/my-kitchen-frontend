@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import ReactCardFlip from 'react-card-flip';
+import { FaGithub,  FaLinkedin } from 'react-icons/fa';
 
 import './AboutUs.css';
 
@@ -16,6 +17,8 @@ class AboutUs extends React.Component {
       showHambalieu: false
     };
   }
+
+
 
   handleClick(e) {
     e.preventDefault();
@@ -81,7 +84,6 @@ class AboutUs extends React.Component {
             </Card>
           </ReactCardFlip>
           </Col>
-
           <Col>
           <ReactCardFlip isFlipped={this.state.showShane} flipDirection="vertical">
             <Card border="dark" style={{ width: '18rem' }}>
@@ -99,6 +101,7 @@ class AboutUs extends React.Component {
             </Card>
           </ReactCardFlip>
           </Col>
+
 
           </Row>
         </Container>

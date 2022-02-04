@@ -23,7 +23,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 import { Stack } from 'react-bootstrap';
 
 
-// let SERVER = process.env.REACT_APP_SERVER;
+let SERVER = process.env.REACT_APP_SERVER;
 
 class Recipes extends React.Component {
   constructor(props) {
@@ -31,7 +31,8 @@ class Recipes extends React.Component {
     this.state = {
       recipes: [],
       show: false,
-      saved: false
+      saved: false,
+      instructions: [{ steps: [{ step: 'Click Get Instructions Below For Detailed Information' }] }]
     };
   }
   getRecipes = async (url) => {
@@ -43,7 +44,7 @@ class Recipes extends React.Component {
 
   postRecipe = async (savedRecipe) => {
     try {
-      let url = `http://localhost:3001/recipe`;
+      let url = `${process.env.REACT_APP_SERVER}/recipe`;
       await axios.post(url, savedRecipe);
     } catch (err) {
       console.error(err)
@@ -51,12 +52,25 @@ class Recipes extends React.Component {
   }
 
   getInstructions = async (id) => {
-    let url = `http://localhost:3001/analyzedInstructions?recipeid=${id}`
-    let instructionsResults = await axios.get(url);
-    this.setState({
-      instructions: instructionsResults.data
-    });
-    console.log(this.state.instructions);
+    try {
+      let url = `${process.env.REACT_APP_SERVER}/analyzedInstructions?recipeid=${id}`
+      let instructionsResults = await axios.get(url);
+      console.log(instructionsResults);
+      if (instructionsResults.data.length === 0) {
+        console.log(`no instructions`);
+        this.setState({
+          instructions: [{ steps: [{ step: 'No instructions' }] }]
+        });
+        console.log(this.state.instructions);
+      } else {
+        this.setState({
+          instructions: instructionsResults.data
+        });
+      }
+
+    } catch (err) {
+      console.error(err);
+    }
   };
 
 
@@ -65,13 +79,29 @@ class Recipes extends React.Component {
     let id = recipeObj.apiId;
     console.log(id);
     this.getInstructions(id);
+
+
   }
 
 
   handleIngredientSubmit = async (e) => {
     e.preventDefault();
     let ingredients = e.target.formBasicIngredient.value;
-    let url = `http://localhost:3001/recipes?ingredient=${ingredients}`;
+    function filter (ingredients) {
+      ingredients = ingredients.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+      ingredients = ingredients.split(' ');
+      let newStr = "";
+      for (let i = 0; i < ingredients.length; i++) {
+        if (i !== 0) {
+          newStr += `,+${ingredients[i]}`;
+        } else {
+          newStr += ingredients[i]
+        }
+      }
+      return newStr;
+    };
+    let newStr = filter(ingredients);
+    let url = `${process.env.REACT_APP_SERVER}/recipes?ingredient=${newStr}`;
     this.getRecipes(url);
   };
 
@@ -97,6 +127,8 @@ class Recipes extends React.Component {
   handleCloseModal = () => {
     this.setState({
       show: false,
+      saved: false,
+      instructions: [{ steps: [{ step: 'Click Get Instructions Below For Detailed Information' }] }]
     })
   };
 
@@ -105,6 +137,7 @@ class Recipes extends React.Component {
 
     return (
       <>
+
         <div>
           <Form className="mb-3" onSubmit={this.handleIngredientSubmit}>
             <Form.Group controlId="formBasicIngredient">
@@ -131,8 +164,9 @@ class Recipes extends React.Component {
             handlePost={this.handlePost}
             saved={this.state.saved}
             handleGetInstructions={this.handleGetInstructions}
-          />
-        }
+            instructions={this.state.instructions}
+          />}
+
         {
           this.state.recipes.length > 0 ? (
             <Container>

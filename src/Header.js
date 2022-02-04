@@ -9,7 +9,7 @@ import './Header.css'
 
 class Header extends React.Component {
   render() {
-    console.log(this.props.auth0);
+    //console.log(this.props.auth0);
     return (
       <Navbar bg="dark" variant="dark">
         <Container>
