@@ -87,17 +87,20 @@ class Recipes extends React.Component {
     e.preventDefault();
     let ingredients = e.target.formBasicIngredient.value;
     function filter (ingredients) {
-      ingredients = ingredients.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-      ingredients = ingredients.split(' ');
-      let newStr = "";
-      for (let i = 0; i < ingredients.length; i++) {
-        if (i !== 0) {
-          newStr += `,+${ingredients[i]}`;
-        } else {
-          newStr += ingredients[i]
-        }
-      }
-      return newStr;
+      console.log(`initial`, ingredients);
+      // ingredients = ingredients.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+      // ingredients = ingredients.split(' ');
+      let newIngredients = ingredients.replace(',', ',+');
+      newIngredients = newIngredients.replace(' ', '');
+      // let newStr = "";
+      // for (let i = 0; i < ingredients.length; i++) {
+      //   if (i !== 0) {
+      //     newStr += `,+${ingredients[i]}`;
+      //   } else {
+      //     newStr += ingredients[i]
+      //   }
+      // }
+      return newIngredients;
     };
     let newStr = filter(ingredients);
     let url = `${process.env.REACT_APP_SERVER}/recipes?ingredient=${newStr}`;
@@ -171,8 +174,8 @@ class Recipes extends React.Component {
             <Container>
               <Row xs={2} md={3} className="recipes">
                 {this.state.recipes.map((recipe, index) => (
-                  <Col>
-                    <Card key={index}>
+                  <Col key={index}>
+                    <Card >
                       <Card.Img src={recipe.image} />
                       <Card.Body>
                         <Card.Title>{recipe.title}</Card.Title>
@@ -193,7 +196,6 @@ class Recipes extends React.Component {
                 <Card.Img src={crabImage} />
                 <Card.Body>
                   <Card.Title>Broiled Crab Cakes</Card.Title>
-                  <Card.Text>
                     <Accordion>
                       <Accordion.Item eventKey="0">
                         <Accordion.Header>Ingredients</Accordion.Header>
@@ -221,7 +223,6 @@ class Recipes extends React.Component {
                         </Accordion.Body>
                       </Accordion.Item>
                     </Accordion>
-                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -230,7 +231,6 @@ class Recipes extends React.Component {
                 <Card.Img src={shakeImage} />
                 <Card.Body>
                   <Card.Title>Homemade Strawberry Shake</Card.Title>
-                  <Card.Text>
                     <Accordion>
                       <Accordion.Item eventKey="0">
                         <Accordion.Header>Ingredients</Accordion.Header>
@@ -252,7 +252,6 @@ class Recipes extends React.Component {
                         </Accordion.Body>
                       </Accordion.Item>
                     </Accordion>
-                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -261,7 +260,6 @@ class Recipes extends React.Component {
                 <Card.Img src={sushiImage} />
                 <Card.Body>
                   <Card.Title>Japanese Sushi</Card.Title>
-                  <Card.Text>
                     <Accordion>
                       <Accordion.Item eventKey="0">
                         <Accordion.Header>Ingredients</Accordion.Header>
@@ -293,7 +291,6 @@ class Recipes extends React.Component {
                         </Accordion.Body>
                       </Accordion.Item>
                     </Accordion>
-                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -302,7 +299,6 @@ class Recipes extends React.Component {
                 <Card.Img src={chickenImage} />
                 <Card.Body>
                   <Card.Title>Crispy Buttermilk Fried Chicken</Card.Title>
-                  <Card.Text>
                     <Accordion>
                       <Accordion.Item eventKey="0">
                         <Accordion.Header>Ingredients</Accordion.Header>
@@ -324,7 +320,6 @@ class Recipes extends React.Component {
                         </Accordion.Body>
                       </Accordion.Item>
                     </Accordion>
-                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -333,7 +328,6 @@ class Recipes extends React.Component {
                 <Card.Img src={riceImage} />
                 <Card.Body>
                   <Card.Title>Mango Fried Rice</Card.Title>
-                  <Card.Text>
                     <Accordion>
                       <Accordion.Item eventKey="0">
                         <Accordion.Header>Ingredients</Accordion.Header>
@@ -359,7 +353,6 @@ class Recipes extends React.Component {
                         </Accordion.Body>
                       </Accordion.Item>
                     </Accordion>
-                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -368,7 +361,6 @@ class Recipes extends React.Component {
                 <Card.Img src={pokeImage} />
                 <Card.Body>
                   <Card.Title>Hawaiian Poke (Aloha Poke)</Card.Title>
-                  <Card.Text>
                     <Accordion>
                       <Accordion.Item eventKey="0">
                         <Accordion.Header>Ingredients</Accordion.Header>
@@ -397,7 +389,6 @@ class Recipes extends React.Component {
                         </Accordion.Body>
                       </Accordion.Item>
                     </Accordion>
-                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>

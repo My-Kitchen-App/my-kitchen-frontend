@@ -40,7 +40,7 @@ class SavedRecipes extends React.Component {
       const responseFromAuth0 = await this.props.auth0.getIdTokenClaims();
       // VERY IMPORTANT.  Double underscore!!!
       const jwt = responseFromAuth0.__raw;
-      //console.log(jwt);
+      console.log(jwt);
 
       //as per axios docs.  take extra care with property names.  they  are specific
       const config = {
