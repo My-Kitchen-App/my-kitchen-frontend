@@ -8,7 +8,6 @@ import AboutUs from './AboutUs';
 import SavedRecipes from './SavedRecipes';
 
 
-
 import { withAuth0 } from '@auth0/auth0-react';
 
 import './App.css';

@@ -30,6 +30,7 @@ class RecipeModal extends React.Component {
 
     return (
       <>
+      
         <Modal show={this.props.show} onHide={this.props.handleCloseModal}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.title}</Modal.Title>
@@ -62,12 +63,12 @@ class RecipeModal extends React.Component {
 
             {this.props.auth0.isAuthenticated ?
               (!this.props.saved && <Button onClick={() => this.props.handlePost(this.props.recipeObj)}>Save Recipe</Button>) : (<LoginButton />)}
-            {this.props.saved && <Button>Saved!</Button>}
+            {this.props.saved && <Button variant="success">Saved!</Button>}
             {this.props.auth0.isAuthenticated ? (null) : (
               <Alert variant="warning">
-                <Alert.Heading>Please Login!</Alert.Heading>
+                <Alert.Heading>Login!</Alert.Heading>
                 <p>
-                  If you want to save a recipe, you gotta login.
+                To save a recipe, log in..
                 </p>
               </Alert>
             )}
