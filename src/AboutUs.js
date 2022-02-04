@@ -52,7 +52,7 @@ class AboutUs extends React.Component {
                     My name is Hambalieu Jallow but I go by 'JALLOW'.I am Originally from Gambia but I have been Living in Seattle for past 6 years. I am currently a Full-Stack Developer utilizing JavaScript,React,CSS,HTML,NodeJS,Express and MongoDb to create fully functional web applications.I am a highly motivated and highly creative engineer that brings a diverse and multilingual perspective to any company culture.Able to work well with others, quick learner, attentive to details, adapt to new work environments quickly, good with multitasking, passionate about the work I do and I do it with a high level of integrity and discretion.
                   </Card.Text>
                   <Button onClick={() => this.setState({ showHambalieu: false })}>Click to see the Developer</Button>
-                  <h3> <FaGithub /> </h3>
+                 
 
                 </Card>
               </ReactCardFlip>

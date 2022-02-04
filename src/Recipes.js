@@ -31,7 +31,7 @@ class Recipes extends React.Component {
       recipes: [],
       show: false,
       saved: false,
-      instructions: [{ steps:[{step:'Click Get Instructions Below For Detailed Information'}]}]
+      instructions: [{ steps: [{ step: 'Click Get Instructions Below For Detailed Information' }] }]
     };
   }
   getRecipes = async (url) => {
@@ -51,21 +51,36 @@ class Recipes extends React.Component {
   }
 
   getInstructions = async (id) => {
-    let url = `${process.env.REACT_APP_SERVER}/analyzedInstructions?recipeid=${id}`
-    let instructionsResults = await axios.get(url);
-    this.setState({
-      instructions: instructionsResults.data
-    });
-    console.log(this.state.instructions[0].steps[0].step);
+    try {
+      let url = `${process.env.REACT_APP_SERVER}/analyzedInstructions?recipeid=${id}`
+      let instructionsResults = await axios.get(url);
+      console.log(instructionsResults);
+      if (instructionsResults.data.length === 0) {
+        console.log(`no instructions`);
+        this.setState({
+          instructions: [{ steps: [{ step: 'No instructions' }] }]
+        });
+        console.log(this.state.instructions);
+      } else {
+        this.setState({
+          instructions: instructionsResults.data
+        });
+      }
+
+    } catch (err) {
+      console.error(err);
+    }
   };
 
 
- 
-  
+
+
   handleGetInstructions = (recipeObj) => {
     let id = recipeObj.apiId;
     console.log(id);
     this.getInstructions(id);
+
+
   }
 
 
@@ -99,7 +114,7 @@ class Recipes extends React.Component {
     this.setState({
       show: false,
       saved: false,
-      instructions: [{ steps:[{step:'Click Get Instructions Below For Detailed Information'}]}]
+      instructions: [{ steps: [{ step: 'Click Get Instructions Below For Detailed Information' }] }]
     })
   };
 
@@ -133,7 +148,7 @@ class Recipes extends React.Component {
             saved={this.state.saved}
             handleGetInstructions={this.handleGetInstructions}
             instructions={this.state.instructions}
-           
+
           />}
         {
           this.state.recipes.length > 0 ? (
@@ -247,13 +262,13 @@ class Recipes extends React.Component {
                           <Accordion.Item eventKey="1">
                             <Accordion.Header>Instructions</Accordion.Header>
                             <Accordion.Body>
-                            <ol>
-                              <li>Pour cooked rice into a tray. Finely slice the salmon and the tuna and put the seaweed onto a sushi mat and press rice down onto it.</li>
-                              <li>Slice the mushrooms and asparagus pieces and lay along the rice and add the wasabi</li>
-                              <li>Roll the sushi and cut into slices</li>
-                              <li>Serve with salmon caviar, wasabi and soy.</li>
-                              <li>Recipe two: Squeeze the rice into balls and press the prawns, tuna or salmon into the top.</li>
-                            </ol>
+                              <ol>
+                                <li>Pour cooked rice into a tray. Finely slice the salmon and the tuna and put the seaweed onto a sushi mat and press rice down onto it.</li>
+                                <li>Slice the mushrooms and asparagus pieces and lay along the rice and add the wasabi</li>
+                                <li>Roll the sushi and cut into slices</li>
+                                <li>Serve with salmon caviar, wasabi and soy.</li>
+                                <li>Recipe two: Squeeze the rice into balls and press the prawns, tuna or salmon into the top.</li>
+                              </ol>
                             </Accordion.Body>
                           </Accordion.Item>
                         </Accordion>
