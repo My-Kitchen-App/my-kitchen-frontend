@@ -22,7 +22,7 @@ import pokeImage from './images/poke.jpeg';
 import { withAuth0 } from '@auth0/auth0-react';
 
 
-// let SERVER = process.env.REACT_APP_SERVER;
+let SERVER = process.env.REACT_APP_SERVER;
 
 class Recipes extends React.Component {
   constructor(props) {
@@ -72,7 +72,21 @@ class Recipes extends React.Component {
   handleIngredientSubmit = async (e) => {
     e.preventDefault();
     let ingredients = e.target.formBasicIngredient.value;
-    let url = `${process.env.REACT_APP_SERVER}/recipes?ingredient=${ingredients}`;
+    function filter (ingredients) {
+      ingredients = ingredients.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+      ingredients = ingredients.split(' ');
+      let newStr = "";
+      for (let i = 0; i < ingredients.length; i++) {
+        if (i !== 0) {
+          newStr += `,+${ingredients[i]}`;
+        } else {
+          newStr += ingredients[i]
+        }
+      }
+      return newStr;
+    };
+    let newStr = filter(ingredients);
+    let url = `${process.env.REACT_APP_SERVER}/recipes?ingredient=${newStr}`;
     this.getRecipes(url);
   };
 
