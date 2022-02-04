@@ -66,9 +66,9 @@ class RecipeModal extends React.Component {
             {this.props.saved && <Button variant="success">Saved!</Button>}
             {this.props.auth0.isAuthenticated ? (null) : (
               <Alert variant="warning">
-                <Alert.Heading>Please Login!</Alert.Heading>
+                <Alert.Heading>Login!</Alert.Heading>
                 <p>
-                  If you want to save a recipe, you gotta login.
+                To save a recipe, log in..
                 </p>
               </Alert>
             )}
