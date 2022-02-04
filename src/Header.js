@@ -4,6 +4,8 @@ import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import { withAuth0 } from '@auth0/auth0-react';
 
+import './Header.css'
+
 
 class Header extends React.Component {
   render() {
@@ -11,7 +13,16 @@ class Header extends React.Component {
     return (
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">My Kitchen</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <img
+               alt=""
+               src="https://i.imgur.com/KS3ahA9.jpg"
+               width="30"
+               height="30"
+               className="d-inline-block align-top"
+            />{' '}
+          M Y K I T C H E N
+          </Navbar.Brand>
           <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/savedRecipes">Saved Recipes</Nav.Link>

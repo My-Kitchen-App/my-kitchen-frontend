@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from './AboutUs';
 import Instructions from './Instructions';
 import SavedRecipes from './SavedRecipes';
-// import background from './images/background.jpeg';
 
 
 import { withAuth0 } from '@auth0/auth0-react';
