@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import ReactCardFlip from 'react-card-flip';
-import { FaGithub,  FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import './AboutUs.css';
 
@@ -30,9 +30,9 @@ class AboutUs extends React.Component {
       <>
         <Container>
 
-            <h2 className='about-us-header'>About The Developers</h2>
+          <h2 className='about-us-header'>About The Developers</h2>
 
- 
+
           <Row xs={1} md={2} className="g-4">
             <Col >
               <ReactCardFlip isFlipped={this.state.showHambalieu} flipDirection="vertical">
