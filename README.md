@@ -14,13 +14,13 @@ My Kitchen aims to solve the logistical dilemma of using remaining pantry items 
 
 ### Domain Modeling:
 
-![image](./img/myKitchen_wf_p1.png)
-![image](./img/myKitchen_wf_p2.png)
-![image](./img/myKitchen_wf_p3.png)
+![image](./imgs/myKitchen_wf_p1.png)
+![image](./imgs/myKitchen_wf_p2.png)
+![image](./imgs/myKitchen_wf_p3.png)
 
 ### Dataflow:
 
-![image](./images/dataflow.png)
+![image](./imgs/dataflow.png)
 
 ### Dependencies
 
@@ -28,3 +28,44 @@ My Kitchen aims to solve the logistical dilemma of using remaining pantry items 
 - React-bootstrap
 - Bootstrap
 - Axios
+
+### Change Log
+
+Features Log:
+
+#### Day 1
+
+- Built framework for react app.
+- Imported all the dependencies including; react bootstrap, axios, react-router-dom, bootstrap.
+- Built routes of application including; home, saved recipes, and about us.
+- Add main components including; Header, App, Recipes, SavedRecipes, AboutUs, RecipeModel, Login/out Button, Footer.
+- Implemented bootstrap components.
+- Added modal functionality to searched recipes. 
+- Auth0 implementation. 
+- Deployed live site to Netlify.
+
+#### Day 2
+
+- Full CRUD functionalities added to saved recipes page
+- Implemented GET, DELETE, and DELETE user interaction driven operations in the modal component
+- About Us page scaffolded
+- Landing page styled and bugs resolved
+
+
+#### Day 3
+
+- Error handling added for bad requests
+- Refactored routes and functions
+- Added functionality for multiple ingredients
+
+#### Day 4
+
+- Fixed Styling on Saved Recipes component
+- Fixed Styling on About Us page
+- Fixed deployment bug and have a successful Netlify application deployment. 
+
+### Collaboration
+
+- Ryan Galloway as Instructor
+- Sarah Creager as TA
+
