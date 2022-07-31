@@ -37,7 +37,7 @@ class AboutUs extends React.Component {
             <Col >
               <ReactCardFlip isFlipped={this.state.showHambalieu} flipDirection="vertical">
                 <Card border="dark">
-                  <Card.Img variant="top" src="https://avatars.githubusercontent.com/u/72369411?v=4" />
+                  <Card.Img variant="top" src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80/100px270" />
                   <Card.Title style={{ textAlign: 'center' }}>
                     MyKicheni
                   </Card.Title>
