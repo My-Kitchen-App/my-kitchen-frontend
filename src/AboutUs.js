@@ -30,16 +30,16 @@ class AboutUs extends React.Component {
       <>
         <Container>
 
-          <h2 className='about-us-header'>About The Developers</h2>
+          <h2 className='about-us-header'>About Us</h2>
 
-
+          
           <Row xs={1} md={2} className="g-4">
             <Col >
               <ReactCardFlip isFlipped={this.state.showHambalieu} flipDirection="vertical">
                 <Card border="dark">
                   <Card.Img variant="top" src="https://avatars.githubusercontent.com/u/72369411?v=4" />
                   <Card.Title style={{ textAlign: 'center' }}>
-                    Hambalieu Jallow
+                    MyKicheni
                   </Card.Title>
                   <div className='icons'>
                     <a href="https://github.com/Hambalieu"><FaGithub />
@@ -48,13 +48,13 @@ class AboutUs extends React.Component {
                     </a>
                   </div>
 
-                  <Button variant="outline-secondary" onClick={() => this.setState({ showHambalieu: true })}>Learn about the App Developer</Button>
+                  <Button variant="outline-secondary" onClick={() => this.setState({ showHambalieu: true })}>Learn about MyKicheni </Button>
                 </Card>
                 <Card border="dark">
                   <Card.Text>
-                    My name is Hambalieu Jallow but I go by 'JALLOW'.I am Originally from Gambia. I am currently a Full-Stack Developer utilizing JavaScript,React,CSS,HTML,NodeJS,Express and MongoDb to create fully functional web applications.I am a highly motivated and highly creative engineer that brings a diverse and multilingual perspective to any company culture.Able to work well with others, quick learner, attentive to details, adapt to new work environments quickly, good with multitasking, passionate about the work I do and I do it with a high level of integrity and discretion.
+                  MyKicheni(is a Swahili name) the home of the vegan, vegetarian and meat lovers food site, accessible and delicious recipes for  . Need something quick and  easy  You’ve landed on the right spot! Need some healthy food advice or tips on putting together a great dinner party? Yup, we’re about to become your new best friends… We are a team who loves everything about food; and when we say everything, we mean everything.
                   </Card.Text>
-                  <Button variant="outline-secondary" onClick={() => this.setState({ showHambalieu: false })}>Click to see the Developer</Button>
+                  <Button variant="outline-secondary" onClick={() => this.setState({ showHambalieu: false })}>Click to see picture</Button>
                 </Card>
               </ReactCardFlip>
            </Col>

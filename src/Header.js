@@ -21,7 +21,7 @@ class Header extends React.Component {
                height="30"
                className="d-inline-block align-top"
             />{' '}
-          M Y K I T C H E N
+          M Y K I C H E N I
           </Navbar.Brand>
           <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
